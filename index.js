@@ -40,7 +40,7 @@ app.use("/", require("./src/routes"));
 app.all("/", (req, res) => {
   res.send({
     error: false,
-    message: "Welcome to PIZZA API",
+    message: "Welcome to Hotel Booking API by D.Z.E.L.",
     docs: {
       swagger: "/document/swagger",
       redoc: "/document/redoc",
