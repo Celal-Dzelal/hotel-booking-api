@@ -10,7 +10,7 @@ router.use("/users", require("./user"));
 
 router.use("/rooms", require("./room"));
 
-// router.use("/reservations", require("./reservation"));
+router.use("/reservations", require("./reservation"));
 
 // router.use("/documents", require("./document"));
 
