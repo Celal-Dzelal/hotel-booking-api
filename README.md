@@ -48,7 +48,7 @@ This RESTful API provides endpoints to manage hotel reservations, including user
 
 ### 📄 License
 
-- This project is licensed under the ISC License. See the LICENSE file for more information.
+- This project is licensed under the MIT License. See the LICENSE file for more information.
 
 ### 📘 API Documentation
 
