@@ -9,7 +9,9 @@ const {
   deleteRoom,
 } = require("../controllers/room");
 
-router.route("/").get(list).post(create);
+const upload = require("../middlewares/upload");
+
+router.route("/").get(list).post(upload.array("image")).post(create);
 
 router.route("/:id").get(read).put(update).delete(deleteRoom);
 
