@@ -20,6 +20,12 @@ const ReservationSchema = new mongoose.Schema(
       type: Date,
       required: true,
       default: () => new Date(),
+      validate: {
+        validator: function (value) {
+          return value >= new Date();
+        },
+        message: "Arrival date must be now or in the future.",
+      },
     },
     departureDate: {
       type: Date,
@@ -39,6 +45,7 @@ const ReservationSchema = new mongoose.Schema(
           (1000 * 60 * 60 * 24)
         );
       },
+      min: [1, "Departure date must be later than arrival date"],
     },
     price: {
       type: Number,
