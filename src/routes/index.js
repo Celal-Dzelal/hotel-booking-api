@@ -12,7 +12,7 @@ router.use("/rooms", require("./room"));
 
 router.use("/reservations", require("./reservation"));
 
-// router.use("/documents", require("./document"));
+router.use("/documents", require("./document"));
 
 /* ------------------------------------------------------- */
 module.exports = router;
