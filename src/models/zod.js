@@ -1,7 +1,7 @@
 const { z } = require("zod");
 
 const passwordRegex =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; //* Normalde zod şifreleme için kendi yapısını kullanıyor ancak default olarak maks. 8 karakter istiyor. Biz daha farklı bir yapı istediğimiz için burada değişken içinde istediğimiz yapıyı tanımladık.
 
 const userCreateSchema = z.object({
   body: z.object({
@@ -22,6 +22,8 @@ const userCreateSchema = z.object({
     isAdmin: z.boolean().optional(),
   }),
 });
+
+//* optional validation için değil body'de gönderilmese de olur anlamında eğer body içinde gönderiliyorsa şartlara uymak zorunda.
 
 const userUpdateSchema = z.object({
   body: z.object({

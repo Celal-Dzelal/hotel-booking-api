@@ -5,11 +5,13 @@ const { mongoose } = require("../configs/dbConnection");
 const ReservationSchema = new mongoose.Schema(
   {
     userId: {
+      //* Bir kişi birden fazla rezerve işlemi yapabileceği için userId'yi unique almadık
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
     roomId: [
+      //* Bir kişi birden fazla oda rezerve edebilir bu nedenle array içinde tanımladık
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Room",
@@ -22,7 +24,7 @@ const ReservationSchema = new mongoose.Schema(
       default: () => new Date(),
       validate: {
         validator: function (value) {
-          return value >= new Date();
+          return value >= new Date(); //* arrivalDate mevcut tarihten büyük veya eşit olmalı
         },
         message: "Arrival date must be now or in the future.",
       },
@@ -45,7 +47,7 @@ const ReservationSchema = new mongoose.Schema(
           (1000 * 60 * 60 * 24)
         );
       },
-      min: [1, "Departure date must be later than arrival date"],
+      min: [1, "Departure date must be later than arrival date"], //* Night 1den küçük olamayacağı için departureDate arrivalDate'den önce olamaz.
     },
     price: {
       type: Number,
